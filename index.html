@@ -1,0 +1,772 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Oʻahu 檀香山之旅</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@1,9..144,500;1,9..144,600&family=Noto+Sans+TC:wght@400;500;700;900&family=Shrikhand&display=swap">
+<style>
+:root{
+  /* Layout: one phone-width column — sunset-poster hero, a sticky rail of 8 day chips, then each day as a card with a tide-line timeline */
+  /* One committed look: the night lagoon after sunset, same on every phone */
+  --bg:#071D25;
+  --card:#0E2A35;
+  --ink:#E6F3F0;
+  --muted:#94B2B8;
+  --line:#1D4351;
+  --soft:#123542;
+  --hibiscus:#FF6E78;
+  --lagoon:#43C6C1;
+  --pineapple:#FFC95C;
+  --on-day:#FFFFFF;
+  --tint:42%;
+  --shadow:0 1px 2px rgb(0 0 0 / .3), 0 12px 30px -16px rgb(0 0 0 / .7);
+  color-scheme:dark;
+  --backdrop:rgb(4 18 24 / .94);
+
+  /* Sunset poster: one fixed look in both themes */
+  --sky-1:#23164A; --sky-2:#5B2467; --sky-3:#B5396D; --sky-4:#EE6A58; --sky-5:#F8A64B;
+  --hero-ink:#FFF5E6; --hero-gold:#FFD27A; --silhouette:#2B1238;
+
+  --f-display:"Shrikhand", Georgia, serif;
+  --f-latin:"Fraunces", Georgia, "Times New Roman", serif;
+  --f-body:"Noto Sans TC", -apple-system, BlinkMacSystemFont, "PingFang TC", "Microsoft JhengHei", sans-serif;
+
+  padding-top:env(safe-area-inset-top, 0px);
+  padding-bottom:env(safe-area-inset-bottom, 0px);
+}
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:var(--f-body); font-size:16px; line-height:1.6;
+}
+body::before{
+  content:""; position:fixed; inset:0 0 auto; height:env(safe-area-inset-top, 0px);
+  z-index:10; background:var(--bg);
+}
+img{max-width:100%; display:block}
+h1,h2,h3,p{margin:0}
+h1,h2,h3{text-wrap:balance}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--pineapple); outline-offset:2px; border-radius:8px}
+
+.wrap{
+  max-width:752px; margin-inline:auto;
+  padding-left:max(16px, env(safe-area-inset-left, 0px));
+  padding-right:max(16px, env(safe-area-inset-right, 0px));
+}
+
+.ico{width:20px; height:20px; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; flex:none}
+.ico.sm{width:15px; height:15px; stroke-width:2}
+
+/* ---------- Hero ---------- */
+.hero{
+  position:relative; overflow:hidden; color:var(--hero-ink);
+  background:linear-gradient(180deg, var(--sky-1) 0%, var(--sky-2) 26%, var(--sky-3) 50%, var(--sky-4) 72%, var(--sky-5) 100%);
+}
+.hero-text{padding-block:28px 0; position:relative; z-index:1}
+.eyebrow{
+  font-size:12px; font-weight:700; letter-spacing:.22em; text-transform:uppercase;
+  color:var(--hero-gold);
+}
+.hero h1{
+  margin-top:10px; font-weight:900; line-height:1.05; letter-spacing:.02em;
+  font-size:clamp(40px, 12vw, 68px);
+}
+.hero h1 b{
+  font-family:var(--f-display); font-weight:400; color:var(--hero-gold);
+  font-size:1.12em; padding-inline:.04em;
+}
+.hero-sub{
+  margin-top:8px; font-family:var(--f-latin); font-style:italic; font-weight:600;
+  font-size:clamp(22px, 6.4vw, 32px); line-height:1.2;
+}
+.hero-sub span{font-family:var(--f-body); font-style:normal; font-weight:700; font-size:.82em; margin-left:.3em}
+.hero-date{
+  margin-top:14px; font-size:15px; font-weight:500; font-variant-numeric:tabular-nums;
+  display:flex; flex-wrap:wrap; gap:4px 8px; align-items:baseline;
+}
+.hero-date .arrow{color:var(--hero-gold)}
+.hero-tags{
+  list-style:none; padding:0; margin:14px 0 0; display:flex; flex-wrap:wrap; gap:6px;
+}
+.hero-tags li{
+  font-size:13px; font-weight:500; padding:3px 10px; border-radius:999px;
+  border:1px solid rgb(255 245 230 / .45); background:rgb(255 245 230 / .1);
+}
+.hero-tags li:first-child{background:var(--hero-gold); color:var(--sky-1); border-color:var(--hero-gold); font-weight:700}
+
+.scene{position:relative; height:clamp(170px, 50vw, 300px); margin-top:-6px}
+.scene svg{position:absolute; inset:0; width:100%; height:100%}
+.aloha{
+  position:absolute; right:max(18px, env(safe-area-inset-right, 0px)); top:4%;
+  font-family:var(--f-display); font-size:clamp(34px, 11vw, 60px); line-height:1;
+  color:var(--hero-gold); transform:rotate(-8deg);
+  text-shadow:0 3px 0 var(--sky-2), 0 6px 18px rgb(35 22 74 / .45);
+}
+@media (min-width:752px){ .aloha{right:calc(50% - 360px)} }
+.hero-edge{position:absolute; left:0; right:0; bottom:-1px; width:100%; height:26px; display:block}
+.hero-edge path{fill:var(--bg)}
+
+.sun{animation:rise 1.8s cubic-bezier(.2,.7,.2,1) both}
+.drift{animation:drift 7s ease-in-out infinite alternate}
+@keyframes rise{from{transform:translateY(14px)}to{transform:none}}
+@keyframes drift{from{transform:translateX(-7px)}to{transform:translateX(7px)}}
+
+/* ---------- Status ---------- */
+.status{position:relative; z-index:2; margin-top:-14px}
+.status-card{
+  background:var(--card); border-radius:22px; box-shadow:var(--shadow);
+  padding:14px 18px; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:12px 18px;
+}
+.countdown{display:flex; align-items:center; gap:12px; min-width:0}
+.cd-num{
+  font-family:var(--f-display); font-size:44px; line-height:1; color:var(--hibiscus);
+  font-variant-numeric:tabular-nums; white-space:nowrap;
+}
+.cd-num.is-word{font-size:30px}
+.cd-label{font-weight:700; font-size:16px; line-height:1.3}
+.cd-sub{font-size:13px; color:var(--muted)}
+.clocks{display:grid; gap:2px; font-size:13px; color:var(--muted)}
+.clocks p{display:flex; gap:10px; justify-content:space-between}
+.clocks time{color:var(--ink); font-weight:700; font-variant-numeric:tabular-nums; font-size:14px}
+
+/* ---------- Day rail ---------- */
+.rail{
+  position:sticky; top:env(safe-area-inset-top, 0px); z-index:5; margin-top:18px;
+  background:var(--bg); border-bottom:1px solid var(--line);
+}
+.rail-track{
+  display:flex; gap:8px; overflow-x:auto; scroll-snap-type:x proximity;
+  padding-block:10px; scrollbar-width:none;
+}
+.rail-track::-webkit-scrollbar{display:none}
+.chip{
+  flex:none; scroll-snap-align:center; text-decoration:none;
+  display:grid; justify-items:center; gap:0; min-width:64px; padding:6px 10px;
+  border-radius:14px; background:var(--card); border:1px solid var(--line);
+  color:var(--ink); transition:background .2s, color .2s, border-color .2s;
+}
+.chip-date{font-size:11px; color:var(--muted); font-variant-numeric:tabular-nums; line-height:1.4}
+.chip-day{font-size:14px; font-weight:700; line-height:1.3}
+.chip[aria-current="true"]{background:var(--day); border-color:var(--day); color:var(--on-day)}
+.chip[aria-current="true"] .chip-date{color:var(--on-day); opacity:.85}
+.chip.is-today{box-shadow:0 0 0 2px var(--pineapple)}
+
+/* ---------- Day cards ---------- */
+.days{display:grid; gap:22px; padding-block:22px 8px}
+.day, .g-card, .chip{--day-ink:color-mix(in oklab, var(--day), #fff var(--tint))}
+.day{
+  background:var(--card); border-radius:24px; box-shadow:var(--shadow); overflow:hidden;
+  scroll-margin-top:calc(env(safe-area-inset-top, 0px) + 84px);
+}
+.day.is-today{outline:3px solid var(--pineapple); outline-offset:3px}
+.day-head{
+  position:relative; overflow:hidden; background:var(--day); color:var(--on-day);
+  padding:16px 18px 28px;
+}
+.day-head::after{
+  content:""; position:absolute; left:0; right:0; bottom:-1px; height:12px;
+  background:radial-gradient(circle at 50% 0, transparent 8.5px, var(--card) 9px) 0 0 / 22px 12px repeat-x;
+}
+.day-meta{display:flex; flex-wrap:wrap; align-items:center; gap:6px 10px; font-size:14px; position:relative; z-index:1}
+.day-no{font-family:var(--f-display); font-size:22px; line-height:1}
+.day-date{font-weight:700; font-variant-numeric:tabular-nums; letter-spacing:.03em}
+.badge{
+  display:inline-flex; align-items:center; gap:4px; padding:2px 9px; border-radius:999px;
+  background:var(--on-day); color:var(--day); font-size:12px; font-weight:700; line-height:1.6;
+}
+.today-badge{display:none; background:var(--pineapple); color:var(--sky-1)}
+.is-today .today-badge{display:inline-flex}
+.day-head h2{margin-top:10px; font-size:25px; font-weight:900; line-height:1.25; position:relative; z-index:1}
+.tagline{margin-top:2px; font-size:14px; opacity:.92; position:relative; z-index:1}
+.big-num{
+  position:absolute; right:12px; bottom:-38px; font-family:var(--f-display);
+  font-size:136px; line-height:1; color:rgb(255 255 255 / .17); pointer-events:none;
+}
+
+.timeline{list-style:none; margin:0; padding:14px 16px 20px}
+.stop{
+  position:relative; display:grid; grid-template-columns:38px minmax(0,1fr); column-gap:12px;
+  padding-block:9px;
+}
+.stop::before{
+  content:""; position:absolute; left:18px; top:0; bottom:0; width:2px; background:var(--line);
+}
+.stop:first-child::before{top:28px}
+.stop:last-child::before{bottom:auto; height:28px}
+.stop:only-child::before{display:none}
+.node{
+  position:relative; z-index:1; width:38px; height:38px; border-radius:50%;
+  display:grid; place-items:center; background:var(--card); color:var(--day-ink);
+  border:2px solid var(--day-ink);
+}
+.stop.hl .node{background:var(--day); border-color:var(--day); color:var(--on-day)}
+.stop-body{min-width:0; padding-top:2px}
+.stop.hl .stop-body{
+  background:color-mix(in oklab, var(--day) 11%, var(--card));
+  border-radius:16px; padding:8px 12px 10px; margin-top:-4px;
+}
+.when{margin-bottom:2px; color:var(--day-ink); font-variant-numeric:tabular-nums}
+.when.is-clock{font-size:15px; font-weight:900; letter-spacing:.03em}
+.when.is-period{
+  display:inline-block; font-size:12px; font-weight:700; letter-spacing:.08em;
+  padding:1px 9px; border-radius:999px; background:color-mix(in oklab, var(--day) 14%, var(--card));
+}
+.zh{font-size:17px; font-weight:700; line-height:1.4}
+.en{font-family:var(--f-latin); font-style:italic; font-weight:500; font-size:15px; color:var(--muted); line-height:1.35; overflow-wrap:anywhere}
+.notes{list-style:none; padding:0; margin:4px 0 0; font-size:14px; color:var(--muted); display:grid; gap:1px}
+.tip{
+  margin-top:8px; font-size:13px; line-height:1.55; padding:7px 10px; border-radius:12px;
+  background:color-mix(in oklab, var(--pineapple) 20%, var(--card));
+}
+.tip strong{margin-right:6px; color:var(--ink)}
+.maps{display:flex; flex-wrap:wrap; gap:6px; margin-top:8px}
+.map{
+  display:inline-flex; align-items:center; gap:4px; min-height:32px; padding:4px 12px;
+  border-radius:999px; font-size:13px; font-weight:700; text-decoration:none;
+  color:var(--day-ink); border:1px solid color-mix(in oklab, var(--day-ink) 40%, transparent);
+}
+.map:hover{background:color-mix(in oklab, var(--day) 10%, var(--card))}
+
+/* ---------- Guide ---------- */
+.sec-head{display:grid; gap:2px; margin-bottom:14px}
+.eyebrow-s{font-size:12px; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--lagoon)}
+.sec-head h2{font-size:24px; font-weight:900; line-height:1.25}
+.guide{padding-block:30px 8px}
+.guide-grid{display:grid; gap:16px}
+@media (min-width:700px){ .guide-grid{grid-template-columns:1fr 1fr} }
+.g-card{
+  background:var(--card); border-radius:22px; box-shadow:var(--shadow); padding:18px;
+  display:flex; flex-direction:column; gap:12px; min-width:0;
+}
+.g-head{display:flex; align-items:center; gap:12px}
+.g-ico{
+  width:42px; height:42px; border-radius:14px; display:grid; place-items:center; flex:none;
+  background:var(--day); color:var(--on-day);
+}
+.g-head h3{font-size:18px; font-weight:900; line-height:1.3}
+.g-head p{font-size:13px; color:var(--day-ink); font-weight:700}
+.flow{list-style:none; margin:0; padding:0; display:grid; gap:8px; counter-reset:step}
+.flow li{
+  display:grid; grid-template-columns:52px minmax(0,1fr); gap:10px; align-items:baseline;
+  padding:8px 12px; border-radius:14px; background:color-mix(in oklab, var(--day) 9%, var(--card));
+}
+.flow b{color:var(--day-ink); font-variant-numeric:tabular-nums; font-size:14px}
+.flow span{font-weight:700; font-size:15px; line-height:1.4}
+.flow small{display:block; font-weight:400; font-size:13px; color:var(--muted)}
+.route{font-size:13px; color:var(--muted); line-height:1.5}
+.route span{
+  display:inline-block; margin-right:6px; padding:0 7px; border-radius:6px; font-weight:700;
+  color:var(--on-day); background:var(--day);
+}
+.checks{list-style:none; margin:0; padding:0; display:grid; gap:8px; font-size:15px}
+.checks li{display:grid; grid-template-columns:22px minmax(0,1fr); gap:8px; align-items:start}
+.checks .ico{color:var(--day-ink); margin-top:3px}
+.suggest{font-size:14px; padding:10px 12px; border-radius:14px; background:var(--soft)}
+.suggest span{display:block; font-size:12px; font-weight:700; letter-spacing:.06em; color:var(--muted)}
+.hotel-en{font-family:var(--f-latin); font-style:italic; font-weight:600; font-size:20px; line-height:1.25}
+.hotel-zh{font-weight:700; margin-top:2px}
+.g-text{font-size:14px; color:var(--muted)}
+.stay{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:8px; margin:0}
+.stay div{padding:8px 10px; border-radius:14px; background:var(--soft)}
+.stay dt{font-size:12px; color:var(--muted)}
+.stay dd{margin:0; font-weight:700; font-variant-numeric:tabular-nums; font-size:15px}
+.tz{font-size:14px; line-height:1.6}
+.tz b{color:var(--day-ink)}
+.words{margin:0; display:grid; gap:8px}
+.words div{display:grid; grid-template-columns:minmax(92px, auto) minmax(0,1fr); gap:10px; align-items:baseline; padding-top:8px; border-top:1px dashed var(--line)}
+.words dt{font-family:var(--f-latin); font-style:italic; font-weight:600; font-size:17px; color:var(--day-ink)}
+.words dd{margin:0; font-size:14px}
+
+/* ---------- Poster & footer ---------- */
+.poster{padding-block:30px 8px}
+.poster-btn{
+  display:block; width:100%; padding:0; border:0; cursor:zoom-in; position:relative;
+  border-radius:20px; overflow:hidden; box-shadow:var(--shadow); background:var(--card); font:inherit;
+}
+.poster-btn img{width:100%; height:auto; aspect-ratio:3 / 2}
+.poster-btn span{
+  position:absolute; right:10px; bottom:10px; font-size:13px; font-weight:700;
+  padding:4px 12px; border-radius:999px; background:var(--card); color:var(--ink); box-shadow:var(--shadow);
+}
+.foot{padding-block:36px 44px; text-align:center}
+.foot-big{font-family:var(--f-display); font-size:44px; line-height:1.1; color:var(--hibiscus)}
+.foot p + p{margin-top:6px; color:var(--muted); font-size:14px}
+
+/* ---------- Lightbox ---------- */
+.lightbox{
+  position:fixed; inset:0; z-index:50; background:var(--backdrop); color:#fff;
+  display:flex; flex-direction:column;
+  padding:env(safe-area-inset-top, 0px) env(safe-area-inset-right, 0px) env(safe-area-inset-bottom, 0px) env(safe-area-inset-left, 0px);
+}
+.lb-bar{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:10px 16px; font-size:14px}
+.lb-bar button{
+  font:inherit; font-weight:700; color:var(--sky-1); background:var(--hero-gold);
+  border:0; border-radius:999px; padding:8px 16px; min-height:40px; cursor:pointer;
+}
+.lb-scroll{flex:1; overflow:auto; display:flex; align-items:flex-start; -webkit-overflow-scrolling:touch}
+.lb-scroll img{width:100%; height:auto; margin:auto; cursor:zoom-in}
+.lightbox.zoomed .lb-scroll img{width:1536px; max-width:none; cursor:zoom-out}
+
+@media (prefers-reduced-motion: reduce){
+  .sun, .drift{animation:none}
+  .chip{transition:none}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-plane" viewBox="0 0 24 24"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></symbol>
+  <symbol id="i-bed" viewBox="0 0 24 24"><path d="M2 20v-8a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v8M4 10V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v4M12 4v6M2 17h20"/></symbol>
+  <symbol id="i-car" viewBox="0 0 24 24"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2M9 17h6"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></symbol>
+  <symbol id="i-run" viewBox="0 0 24 24"><circle cx="15" cy="4" r="2"/><path d="M13.5 7 11 13M13 8.5 9.5 10.5 7 9.5M13 8.5l3 2.5 2.5-1M11 13l3 3-.5 5M11 13l-3 3.5-3-.5"/></symbol>
+  <symbol id="i-flower" viewBox="0 0 24 24"><g><ellipse cx="12" cy="6.6" rx="3" ry="4.2"/><ellipse cx="12" cy="6.6" rx="3" ry="4.2" transform="rotate(72 12 12)"/><ellipse cx="12" cy="6.6" rx="3" ry="4.2" transform="rotate(144 12 12)"/><ellipse cx="12" cy="6.6" rx="3" ry="4.2" transform="rotate(216 12 12)"/><ellipse cx="12" cy="6.6" rx="3" ry="4.2" transform="rotate(288 12 12)"/></g><circle cx="12" cy="12" r="1.6"/></symbol>
+  <symbol id="i-wave" viewBox="0 0 24 24"><circle cx="7" cy="6.5" r="2.5"/><path d="M2 14q2.5-2.5 5 0t5 0t5 0t5 0M2 19q2.5-2.5 5 0t5 0t5 0t5 0"/></symbol>
+  <symbol id="i-sunset" viewBox="0 0 24 24"><path d="M12 3v4M4.9 8.9l1.4 1.4M19.1 8.9l-1.4 1.4M2 17h3M19 17h3M7 17a5 5 0 0 1 10 0M2 21h20"/></symbol>
+  <symbol id="i-fork" viewBox="0 0 24 24"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2M7 2v20M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/></symbol>
+  <symbol id="i-bag" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0"/></symbol>
+  <symbol id="i-landmark" viewBox="0 0 24 24"><path d="M3 21h18M4 18h16M6 18v-7M10 18v-7M14 18v-7M18 18v-7M4 10h16L12 4z"/></symbol>
+  <symbol id="i-anchor" viewBox="0 0 24 24"><circle cx="12" cy="5" r="3"/><path d="M12 22V8M5 12H2a10 10 0 0 0 20 0h-3"/></symbol>
+  <symbol id="i-flag" viewBox="0 0 24 24"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1zM4 22v-7"/></symbol>
+  <symbol id="i-music" viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></symbol>
+  <symbol id="i-mountain" viewBox="0 0 24 24"><path d="m8 3 4 8 5-5 5 15H2L8 3z"/></symbol>
+  <symbol id="i-pineapple" viewBox="0 0 24 24"><ellipse cx="12" cy="15.5" rx="5" ry="6"/><path d="M12 9.5V3M12 9.5 8.5 4.5M12 9.5l3.5-5M8.6 12.5l6.8 6M15.4 12.5l-6.8 6"/></symbol>
+  <symbol id="i-turtle" viewBox="0 0 24 24"><ellipse cx="11" cy="12" rx="6.5" ry="4.5"/><circle cx="19.6" cy="12" r="1.8"/><path d="M7.2 8.4 5.2 6M14.8 8.4l2-2.4M7.2 15.6 5.2 18M14.8 15.6l2 2.4M4.5 12h-2M8 12h6M11 7.5v9"/></symbol>
+  <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10zM2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></symbol>
+  <symbol id="i-town" viewBox="0 0 24 24"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18zM6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2M10 6h4M10 10h4M10 14h4M10 18h4"/></symbol>
+  <symbol id="i-statue" viewBox="0 0 24 24"><circle cx="11" cy="4.5" r="2"/><path d="M11 7v7M7.5 9.5 11 8l3.5 1.5L18 7M18 4v11M8.5 21v-5h5v5M5.5 21h11"/></symbol>
+  <symbol id="i-coffee" viewBox="0 0 24 24"><path d="M17 8h1a4 4 0 1 1 0 8h-1M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4zM6 2v2M10 2v2M14 2v2"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22z"/></symbol>
+</svg>
+
+<header class="hero">
+  <div class="wrap hero-text">
+    <p class="eyebrow">Aloha · Oʻahu · Hawaiʻi</p>
+    <h1>夏威夷 <b>8</b>天<b>7</b>夜</h1>
+    <p class="hero-sub" lang="haw">Oʻahu<span lang="zh-Hant">檀香山之旅</span></p>
+    <p class="hero-date">
+      <time datetime="2026-12-10">2026.12.10（四）</time>
+      <span class="arrow" aria-hidden="true">→</span>
+      <time datetime="2026-12-17">12.17（四）</time>
+    </p>
+    <ul class="hero-tags" aria-label="旅程關鍵字">
+      <li>6 人同行</li><li>海灘</li><li>路跑</li><li>美食</li><li>購物</li><li>放鬆</li>
+    </ul>
+  </div>
+
+  <div class="scene" aria-hidden="true">
+    <svg viewBox="0 0 400 190" preserveAspectRatio="xMidYMax slice">
+      <defs>
+        <linearGradient id="sunGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#FFE9A3"/>
+          <stop offset=".55" stop-color="#FFB347"/>
+          <stop offset="1" stop-color="#FF7A59"/>
+        </linearGradient>
+        <linearGradient id="seaGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#1E8E9C"/>
+          <stop offset="1" stop-color="#0B5A72"/>
+        </linearGradient>
+        <mask id="sunCut">
+          <rect width="400" height="190" fill="#fff"/>
+          <rect y="112" width="400" height="2" fill="#000"/>
+          <rect y="121" width="400" height="3" fill="#000"/>
+          <rect y="131" width="400" height="4" fill="#000"/>
+          <rect y="142" width="400" height="5" fill="#000"/>
+        </mask>
+        <symbol id="palm" overflow="visible">
+          <path d="M0 0C4-40 10-80 22-118" fill="none" stroke="#2B1238" stroke-width="6" stroke-linecap="round"/>
+          <g fill="#2B1238">
+            <path d="M22-118C0-128-22-120-36-102C-18-112 2-114 22-115z"/>
+            <path d="M22-118C40-134 66-132 80-116C62-124 42-122 22-115z"/>
+            <path d="M22-118C12-140-8-150-26-146C-6-140 8-132 22-115z"/>
+            <path d="M22-118C36-146 58-152 72-142C54-142 38-134 22-115z"/>
+            <path d="M22-118C20-100 8-84-4-76C8-90 14-104 20-116z"/>
+            <path d="M22-118C34-104 40-88 40-74C34-90 28-104 23-116z"/>
+            <circle cx="20" cy="-113" r="3.2"/><circle cx="25" cy="-112" r="3"/>
+          </g>
+        </symbol>
+      </defs>
+
+      <g class="sun"><circle cx="200" cy="140" r="64" fill="url(#sunGrad)" mask="url(#sunCut)"/></g>
+
+      <!-- Kaimana hills, Waikiki skyline and Lēʻahi (Diamond Head) -->
+      <path d="M0 141C30 130 58 133 86 139C112 144 140 144 168 151H0z" fill="#5B2560" opacity=".55"/>
+      <g fill="#3A1A4A" opacity=".75">
+        <rect x="58" y="128" width="9" height="24"/><rect x="70" y="120" width="11" height="32"/>
+        <rect x="84" y="131" width="8" height="21"/><rect x="95" y="124" width="10" height="28"/>
+        <rect x="108" y="134" width="12" height="18"/><rect x="123" y="129" width="7" height="23"/>
+        <rect x="133" y="137" width="10" height="15"/>
+      </g>
+      <path d="M214 151C236 147 250 130 266 121C279 114 289 104 303 100C317 97 325 106 336 108C350 111 362 104 375 112C388 120 396 134 400 140V151z" fill="#45204F" opacity=".9"/>
+
+      <rect y="150" width="400" height="40" fill="url(#seaGrad)"/>
+      <g fill="#FFD27A">
+        <rect x="170" y="154" width="60" height="2.4" rx="1.2" opacity=".85"/>
+        <rect x="178" y="160" width="44" height="2.2" rx="1.1" opacity=".65"/>
+        <rect x="186" y="166" width="28" height="2" rx="1" opacity=".5"/>
+        <rect x="192" y="172" width="16" height="1.8" rx=".9" opacity=".35"/>
+      </g>
+      <g class="drift" fill="none" stroke="#fff" stroke-linecap="round" opacity=".35">
+        <path d="M24 162q8-4 16 0t16 0M248 158q8-4 16 0t16 0t16 0M110 176q8-4 16 0t16 0M300 178q8-4 16 0t16 0"/>
+      </g>
+
+      <use href="#palm" transform="translate(30 192) scale(.95)"/>
+      <use href="#palm" transform="translate(384 196) scale(-.78 .78)"/>
+    </svg>
+    <span class="aloha">Aloha!</span>
+  </div>
+
+  <svg class="hero-edge" viewBox="0 0 400 26" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 14C40 4 80 4 120 12S200 24 240 14 320 2 360 10 400 18 400 18V26H0z"/>
+  </svg>
+</header>
+
+<main>
+  <section class="wrap status" aria-label="出發倒數與當地時間">
+    <div class="status-card">
+      <div class="countdown">
+        <span class="cd-num" id="cd-num">—</span>
+        <div>
+          <p class="cd-label" id="cd-label">天後出發</p>
+          <p class="cd-sub" id="cd-sub">12/10（四）搭機前往檀香山</p>
+        </div>
+      </div>
+      <div class="clocks">
+        <p><span>檀香山</span><time id="clock-hnl">--:--</time></p>
+        <p><span>台灣</span><time id="clock-tpe">--:--</time></p>
+      </div>
+    </div>
+  </section>
+
+  <nav class="rail" aria-label="行程日期">
+    <div class="wrap rail-track" id="rail"></div>
+  </nav>
+
+  <div class="wrap days" id="days"></div>
+
+  <section class="wrap guide" aria-labelledby="guide-title">
+    <div class="sec-head">
+      <p class="eyebrow-s">Good to know</p>
+      <h2 id="guide-title">旅途重點</h2>
+    </div>
+    <div class="guide-grid">
+
+      <article class="g-card" style="--day:#C4521A">
+        <header class="g-head">
+          <span class="g-ico"><svg class="ico" aria-hidden="true"><use href="#i-run"/></svg></span>
+          <div><h3>10K 路跑 + 按摩</h3><p>12/13（日）Day 4</p></div>
+        </header>
+        <ol class="flow">
+          <li><b>05:00</b><span>Start to Park 10K<small>10 公里歡樂路跑</small></span></li>
+          <li><b>上午</b><span>回飯店休息</span></li>
+          <li><b>下午</b><span>90 分鐘 Lomi Lomi Massage<small>夏威夷式按摩・放鬆肌肉、享受海島時光</small></span></li>
+        </ol>
+        <p class="route"><span>起點</span>Ala Moana Blvd / Queen St（阿拉莫阿那大道／皇后街）</p>
+        <p class="route"><span>終點</span>Kapiʻolani Park（卡皮歐拉尼公園）</p>
+      </article>
+
+      <article class="g-card" style="--day:#6A4CC4">
+        <header class="g-head">
+          <span class="g-ico"><svg class="ico" aria-hidden="true"><use href="#i-car"/></svg></span>
+          <div><h3>租車重點</h3><p>只租 2 天</p></div>
+        </header>
+        <ul class="checks">
+          <li><svg class="ico sm" aria-hidden="true"><use href="#i-check"/></svg><span>只租 12/12（六）＋ 12/14（一）兩天</span></li>
+          <li><svg class="ico sm" aria-hidden="true"><use href="#i-check"/></svg><span>6 人＋少量隨身行李，7 人座 SUV 最適合</span></li>
+          <li><svg class="ico sm" aria-hidden="true"><use href="#i-check"/></svg><span>12/13 路跑日不租車</span></li>
+          <li><svg class="ico sm" aria-hidden="true"><use href="#i-check"/></svg><span>其他天使用 Uber ＋ 步行最方便</span></li>
+        </ul>
+        <p class="suggest"><span>建議車款</span>Toyota Highlander 或同級 7 人座 SUV</p>
+      </article>
+
+      <article class="g-card" style="--day:#0B7F6D">
+        <header class="g-head">
+          <span class="g-ico"><svg class="ico" aria-hidden="true"><use href="#i-bed"/></svg></span>
+          <div><h3>住宿資訊</h3><p>Waikiki・7 晚</p></div>
+        </header>
+        <div>
+          <p class="hotel-en" lang="en">Imperial Hawaii Resort Waikiki</p>
+          <p class="hotel-zh">威基基帝國夏威夷度假村</p>
+        </div>
+        <p class="g-text">地點便利，步行即可到海灘、餐廳與購物區。</p>
+        <dl class="stay">
+          <div><dt>入住</dt><dd>12/10（四）</dd></div>
+          <div><dt>退房</dt><dd>12/17（四）</dd></div>
+          <div><dt>共</dt><dd>7 晚</dd></div>
+        </dl>
+        <div class="maps">
+          <a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=Imperial%20Hawaii%20Resort%20at%20Waikiki" target="_blank" rel="noopener" aria-label="在 Google 地圖開啟飯店位置"><svg class="ico sm" aria-hidden="true"><use href="#i-pin"/></svg>飯店地圖</a>
+        </div>
+      </article>
+
+      <article class="g-card" style="--day:#D63A6E">
+        <header class="g-head">
+          <span class="g-ico"><svg class="ico" aria-hidden="true"><use href="#i-chat"/></svg></span>
+          <div><h3>Aloha 小抄</h3><p>時差與在地用語</p></div>
+        </header>
+        <p class="tz">夏威夷時間（HST, UTC−10）比台灣<b>慢 18 小時</b>，全年不實施夏令時間。首爾則比檀香山<b>快 19 小時</b>。</p>
+        <dl class="words">
+          <div><dt lang="haw">Aloha</dt><dd>你好、再見，也代表愛與善意</dd></div>
+          <div><dt lang="haw">Mahalo</dt><dd>謝謝</dd></div>
+          <div><dt lang="haw">ʻOno</dt><dd>好吃！</dd></div>
+          <div><dt lang="haw">Pau</dt><dd>結束、完成（pau hana＝下班）</dd></div>
+          <div><dt lang="haw">Mauka / Makai</dt><dd>往山那側／往海那側，在地人報路常用</dd></div>
+          <div><dt>Shaka</dt><dd>大拇指加小指的手勢，意思是放輕鬆</dd></div>
+        </dl>
+      </article>
+
+    </div>
+  </section>
+
+  <section class="wrap poster" aria-labelledby="poster-title">
+    <div class="sec-head">
+      <p class="eyebrow-s">Original</p>
+      <h2 id="poster-title">原始行程圖</h2>
+    </div>
+    <button class="poster-btn" id="poster-open" type="button" aria-label="放大查看原始行程圖">
+      <img src="S__19046494.jpg" alt="夏威夷 8 天 7 夜 Oʻahu 檀香山之旅行程海報" width="1536" height="1024" loading="lazy">
+      <span>點擊放大</span>
+    </button>
+  </section>
+
+  <footer class="wrap foot">
+    <p class="foot-big">Mahalo!</p>
+    <p>祝 6 人旅途平安、玩得盡興。</p>
+  </footer>
+</main>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="原始行程圖" hidden>
+  <div class="lb-bar">
+    <span>點圖片可切換放大／符合螢幕</span>
+    <button type="button" id="lb-close">關閉</button>
+  </div>
+  <div class="lb-scroll">
+    <img id="lb-img" src="S__19046494.jpg" alt="夏威夷 8 天 7 夜行程海報（放大檢視）" width="1536" height="1024">
+  </div>
+</div>
+
+<script>
+// 行程資料：改這裡就能更新頁面
+// t：時間（"08:30" 這類時刻，或 上午／下午／傍晚／晚上；空字串代表接續上一段）
+// map：[標籤, Google Maps 搜尋字串]；hl：重點行程；tip：出發前要注意的事
+const DAYS = [
+  { n:1, md:"12/10", wd:"四", color:"#D63A6E", title:"抵達檀香山", tagline:"出發・初見夏威夷",
+    badges:[["plane","飛行日"]],
+    stops:[
+      { t:"上午", icon:"plane", zh:"搭機前往檀香山", en:"Honolulu" },
+      { t:"下午", icon:"plane", zh:"抵達檀香山國際機場", en:"Daniel K. Inouye International Airport",
+        map:[["地圖","Daniel K. Inouye International Airport"]] },
+      { t:"", icon:"bed", zh:"前往飯店入住", en:"Imperial Hawaii Resort Waikiki", notes:["威基基帝國夏威夷度假村"],
+        map:[["地圖","Imperial Hawaii Resort at Waikiki"]] },
+      { t:"傍晚", icon:"sunset", zh:"威基基海灘", en:"Waikiki Beach", notes:["欣賞夕陽・晚餐"],
+        map:[["地圖","Waikiki Beach"]] },
+    ]},
+  { n:2, md:"12/11", wd:"五", color:"#2369B8", title:"歷史文化探索", tagline:"皇宮・珍珠港・馬拉松博覽會",
+    stops:[
+      { t:"上午", icon:"landmark", zh:"伊奧拉尼皇宮", en:"ʻIolani Palace", map:[["地圖","Iolani Palace"]] },
+      { t:"", icon:"anchor", zh:"珍珠港", en:"Pearl Harbor",
+        tip:"USS Arizona 紀念館船票建議提前在 Recreation.gov 預約。",
+        map:[["地圖","Pearl Harbor National Memorial"]] },
+      { t:"下午", icon:"flag", zh:"檀香山馬拉松博覽會", en:"Honolulu Marathon Expo",
+        map:[["地圖","Hawaii Convention Center"]] },
+      { t:"晚上", icon:"music", zh:"週五夜市／音樂活動", en:"Aloha Friday Night", notes:["逛街・晚餐"] },
+    ]},
+  { n:3, md:"12/12", wd:"六", color:"#0B7F6D", title:"東海岸一日遊", tagline:"絕美海岸線・浮潛・觀景",
+    badges:[["car","租車"]],
+    stops:[
+      { t:"08:30", icon:"wave", zh:"恐龍灣", en:"Hanauma Bay", notes:["想浮潛的人下水","不浮潛的人觀景"],
+        tip:"需事先上網預約入園，週一、二休園；出發前請再確認官網。",
+        map:[["地圖","Hanauma Bay Nature Preserve"]] },
+      { t:"10:45", icon:"wave", zh:"哈蘿那噴水口", en:"Halona Blowhole", map:[["地圖","Halona Blowhole Lookout"]] },
+      { t:"11:15", icon:"wave", zh:"沙灘海灘", en:"Sandy Beach", map:[["地圖","Sandy Beach Park Oahu"]] },
+      { t:"11:00", icon:"mountain", zh:"馬卡普烏瞭望台", en:"Makapuʻu Lookout", map:[["地圖","Makapuu Point Lookout"]] },
+      { t:"13:00", icon:"fork", zh:"凱魯瓦午餐", en:"Kailua", hl:true, map:[["地圖","Kailua, HI"]] },
+      { t:"14:00", icon:"wave", zh:"拉尼凱海灘", en:"Lanikai Beach", map:[["地圖","Lanikai Beach"]] },
+      { t:"16:00", icon:"car", zh:"回威基基", en:"Waikiki" },
+    ]},
+  { n:4, md:"12/13", wd:"日", color:"#C4521A", title:"10K 路跑 + 按摩", tagline:"奔跑・放鬆・享受海島時光",
+    badges:[["run","路跑日"]],
+    stops:[
+      { t:"05:00", icon:"run", zh:"10 公里歡樂路跑", en:"Start to Park 10K", hl:true,
+        notes:["Ala Moana Boulevard / Queen Street（阿拉莫阿那大道／皇后街）起跑","→ Kapiʻolani Park（卡皮歐拉尼公園）終點"],
+        map:[["起點","Ala Moana Blvd & Queen St, Honolulu"],["終點","Kapiolani Park"]] },
+      { t:"上午", icon:"bed", zh:"路跑結束，回飯店休息" },
+      { t:"下午", icon:"flower", zh:"90 分鐘夏威夷式按摩", en:"Lomi Lomi Massage", hl:true },
+      { t:"晚上", icon:"sunset", zh:"威基基海灘", en:"Waikiki Beach", notes:["夕陽・晚餐・放鬆"], map:[["地圖","Waikiki Beach"]] },
+    ]},
+  { n:5, md:"12/14", wd:"一", color:"#6A4CC4", title:"北岸一日遊", tagline:"小鎮・美食・海龜・大自然",
+    badges:[["car","租車"]],
+    stops:[
+      { t:"08:00", icon:"pineapple", zh:"都樂菠蘿園", en:"Dole Plantation", map:[["地圖","Dole Plantation"]] },
+      { t:"10:00", icon:"town", zh:"哈雷瓦小鎮", en:"Haleʻiwa", map:[["地圖","Haleiwa, HI"]] },
+      { t:"12:00", icon:"fork", zh:"蒜味蝦", en:"Garlic Shrimp", map:[["地圖","garlic shrimp truck North Shore Oahu"]] },
+      { t:"13:30", icon:"turtle", zh:"拉尼亞凱海灘（海龜海灘）", en:"Laniakea Beach",
+        tip:"看海龜請保持 3 公尺以上距離，不觸摸、不餵食。",
+        map:[["地圖","Laniakea Beach"]] },
+      { t:"15:00", icon:"leaf", zh:"威美亞谷", en:"Waimea Valley", map:[["地圖","Waimea Valley"]] },
+      { t:"17:00", icon:"car", zh:"回威基基", en:"Waikiki" },
+    ]},
+  { n:6, md:"12/15", wd:"二", color:"#146C8F", title:"市區文化・輕鬆行程", tagline:"皇宮・市區・地標・自由時間",
+    stops:[
+      { t:"上午", icon:"landmark", zh:"伊奧拉尼皇宮", en:"ʻIolani Palace", notes:["可入內參觀"], map:[["地圖","Iolani Palace"]] },
+      { t:"", icon:"town", zh:"檀香山市區", en:"Downtown Honolulu", notes:["逛街・文創・美食"], map:[["地圖","Downtown Honolulu"]] },
+      { t:"", icon:"statue", zh:"卡美哈美哈大帝雕像", en:"King Kamehameha Statue", map:[["地圖","King Kamehameha Statue Honolulu"]] },
+      { t:"下午", icon:"coffee", zh:"自由活動", notes:["咖啡廳・在地美食","或回飯店休息"] },
+    ]},
+  { n:7, md:"12/16", wd:"三", color:"#2574B5", title:"購物・海灘・最後之夜", tagline:"阿拉莫阿那・威基基",
+    stops:[
+      { t:"上午", icon:"bag", zh:"阿拉莫阿那購物中心", en:"Ala Moana Center", notes:["購物・美食"], map:[["地圖","Ala Moana Center"]] },
+      { t:"下午", icon:"wave", zh:"威基基海灘", en:"Waikiki Beach", notes:["自由活動・拍照・放鬆"], map:[["地圖","Waikiki Beach"]] },
+      { t:"晚上", icon:"fork", zh:"最後晚餐", notes:["享受夏威夷美食・回味旅程"], hl:true },
+    ]},
+  { n:8, md:"12/17", wd:"四", color:"#C93468", title:"前往韓國首爾", tagline:"開啟另一段變水水的行程",
+    badges:[["plane","飛行日"]],
+    stops:[
+      { t:"上午", icon:"bed", zh:"早餐・退房" },
+      { t:"", icon:"car", zh:"前往檀香山國際機場", en:"Daniel K. Inouye International Airport",
+        map:[["地圖","Daniel K. Inouye International Airport"]] },
+      { t:"11:40", icon:"plane", zh:"搭機前往韓國首爾", en:"Seoul", hl:true,
+        tip:"會飛越國際換日線，抵達首爾時已是 12/18。" },
+    ]},
+];
+
+const TRIP_START = new Date(2026, 11, 10);
+const TRIP_END = new Date(2026, 11, 17);
+
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const ico = (name, cls = "ico") => `<svg class="${cls}" aria-hidden="true"><use href="#i-${name}"/></svg>`;
+const mapUrl = q => "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(q);
+
+function stopHTML(s){
+  const isClock = /^\d/.test(s.t || "");
+  const when = s.t ? `<p class="when ${isClock ? "is-clock" : "is-period"}">${esc(s.t)}</p>` : "";
+  const en = s.en ? `<p class="en" lang="en">${esc(s.en)}</p>` : "";
+  const notes = s.notes ? `<ul class="notes">${s.notes.map(n => `<li>${esc(n)}</li>`).join("")}</ul>` : "";
+  const tip = s.tip ? `<p class="tip"><strong>小提醒</strong>${esc(s.tip)}</p>` : "";
+  const maps = s.map ? `<div class="maps">${s.map.map(([label, q]) =>
+    `<a class="map" href="${mapUrl(q)}" target="_blank" rel="noopener" aria-label="在 Google 地圖開啟 ${esc(s.zh)} ${esc(label)}">${ico("pin", "ico sm")}${esc(label)}</a>`
+  ).join("")}</div>` : "";
+  return `<li class="stop${s.hl ? " hl" : ""}">
+    <span class="node">${ico(s.icon)}</span>
+    <div class="stop-body">${when}<h3 class="zh">${esc(s.zh)}</h3>${en}${notes}${tip}${maps}</div>
+  </li>`;
+}
+
+function dayHTML(d){
+  const badges = (d.badges || []).map(([icon, text]) => `<span class="badge">${ico(icon, "ico sm")}${esc(text)}</span>`).join("");
+  return `<section class="day" id="day${d.n}" style="--day:${d.color}" aria-labelledby="day${d.n}-title">
+    <header class="day-head">
+      <p class="day-meta"><span class="day-no">Day ${d.n}</span><span class="day-date">${d.md}（${d.wd}）</span>${badges}<span class="badge today-badge">今天</span></p>
+      <h2 id="day${d.n}-title">${esc(d.title)}</h2>
+      <p class="tagline">${esc(d.tagline)}</p>
+      <span class="big-num" aria-hidden="true">${d.n}</span>
+    </header>
+    <ol class="timeline">${d.stops.map(stopHTML).join("")}</ol>
+  </section>`;
+}
+
+const rail = document.getElementById("rail");
+const daysEl = document.getElementById("days");
+daysEl.innerHTML = DAYS.map(dayHTML).join("");
+rail.innerHTML = DAYS.map(d =>
+  `<a class="chip" href="#day${d.n}" style="--day:${d.color}" data-day="${d.n}">
+    <span class="chip-date">${d.md} ${d.wd}</span><span class="chip-day">Day ${d.n}</span>
+  </a>`).join("");
+
+const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const chips = [...rail.querySelectorAll(".chip")];
+
+function setActive(n){
+  chips.forEach(c => {
+    const on = c.dataset.day === String(n);
+    c.setAttribute("aria-current", on ? "true" : "false");
+    if (on) rail.scrollTo({ left: c.offsetLeft - rail.clientWidth / 2 + c.offsetWidth / 2, behavior: reduceMotion ? "auto" : "smooth" });
+  });
+}
+
+rail.addEventListener("click", e => {
+  const chip = e.target.closest(".chip");
+  if (!chip) return;
+  e.preventDefault();
+  document.getElementById("day" + chip.dataset.day).scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
+  setActive(chip.dataset.day);
+});
+
+const spy = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) setActive(e.target.id.replace("day", "")); });
+}, { rootMargin: "-40% 0px -55% 0px" });
+document.querySelectorAll(".day").forEach(s => spy.observe(s));
+setActive(1);
+
+// 倒數／今天是第幾天（以瀏覽者手機的當地日期計算）
+const today = new Date(); today.setHours(0, 0, 0, 0);
+const daysToGo = Math.round((TRIP_START - today) / 864e5);
+const cdNum = document.getElementById("cd-num");
+const cdLabel = document.getElementById("cd-label");
+const cdSub = document.getElementById("cd-sub");
+let todayN = null;
+if (daysToGo > 0){
+  cdNum.textContent = daysToGo;
+  cdLabel.textContent = "天後出發";
+  cdSub.textContent = "12/10（四）搭機前往檀香山";
+} else if (today <= TRIP_END){
+  todayN = 1 - daysToGo;
+  const d = DAYS[todayN - 1];
+  cdNum.textContent = "Day " + todayN;
+  cdNum.classList.add("is-word");
+  cdLabel.textContent = "今天：" + d.title;
+  cdSub.textContent = d.tagline;
+  document.getElementById("day" + todayN).classList.add("is-today");
+  chips[todayN - 1].classList.add("is-today");
+} else {
+  cdNum.textContent = "Mahalo!";
+  cdNum.classList.add("is-word");
+  cdLabel.textContent = "旅程圓滿結束";
+  cdSub.textContent = "下一站：首爾";
+}
+
+const hash = location.hash.slice(1);
+if (/^day[1-8]$/.test(hash)) document.getElementById(hash).scrollIntoView();
+else if (todayN) document.getElementById("day" + todayN).scrollIntoView();
+
+// 兩地時鐘
+const fmt = tz => ({
+  d: new Intl.DateTimeFormat("en-US", { timeZone: tz, month: "numeric", day: "numeric" }),
+  t: new Intl.DateTimeFormat("en-GB", { timeZone: tz, hour: "2-digit", minute: "2-digit", hour12: false }),
+});
+const clocks = [[document.getElementById("clock-hnl"), fmt("Pacific/Honolulu")], [document.getElementById("clock-tpe"), fmt("Asia/Taipei")]];
+function tick(){
+  const now = new Date();
+  clocks.forEach(([el, f]) => { el.textContent = `${f.d.format(now)} ${f.t.format(now)}`; });
+}
+tick();
+setInterval(tick, 20000);
+
+// 原始行程圖
+const lb = document.getElementById("lightbox");
+const openBtn = document.getElementById("poster-open");
+function closeLb(){
+  lb.hidden = true; lb.classList.remove("zoomed");
+  document.documentElement.style.overflow = "";
+  openBtn.focus();
+}
+openBtn.addEventListener("click", () => {
+  lb.hidden = false;
+  document.documentElement.style.overflow = "hidden";
+  document.getElementById("lb-close").focus();
+});
+document.getElementById("lb-close").addEventListener("click", closeLb);
+document.getElementById("lb-img").addEventListener("click", () => lb.classList.toggle("zoomed"));
+document.addEventListener("keydown", e => { if (e.key === "Escape" && !lb.hidden) closeLb(); });
+</script>
+</body>
+</html>
